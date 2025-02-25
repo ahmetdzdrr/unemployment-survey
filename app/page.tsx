@@ -328,8 +328,8 @@ export default function Home() {
                       <Select
                         value={formData.graduationDate ? new Date(formData.graduationDate).getFullYear().toString() : ''}
                         onValueChange={(year) => {
-                          const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
-                          const newDate = new Date(parseInt(year), currentDate.getMonth(), currentDate.getDate());
+                          const newDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
+                          newDate.setFullYear(parseInt(year));
                           setFormData(prev => ({
                             ...prev,
                             graduationDate: newDate.toISOString()
@@ -352,8 +352,8 @@ export default function Home() {
                       <Select
                         value={formData.graduationDate ? (new Date(formData.graduationDate).getMonth() + 1).toString() : ''}
                         onValueChange={(month) => {
-                          const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
-                          const newDate = new Date(currentDate.getFullYear(), parseInt(month) - 1, currentDate.getDate());
+                          const newDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date(0);
+                          newDate.setMonth(parseInt(month) - 1);
                           setFormData(prev => ({
                             ...prev,
                             graduationDate: newDate.toISOString()
@@ -382,18 +382,8 @@ export default function Home() {
                       <Select
                         value={formData.graduationDate ? new Date(formData.graduationDate).getDate().toString() : ''}
                         onValueChange={(day) => {
-                          const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
-                          const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), parseInt(day));
-                          
-                          // Bugünden sonraki tarihleri kontrol et
-                          const today = new Date();
-                          today.setHours(0, 0, 0, 0);
-                          
-                          if (newDate > today) {
-                            toast.error('Mezuniyet tarihi bugünden sonra olamaz!');
-                            return;
-                          }
-                          
+                          const newDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date(0);
+                          newDate.setDate(parseInt(day));
                           setFormData(prev => ({
                             ...prev,
                             graduationDate: newDate.toISOString()
@@ -407,7 +397,7 @@ export default function Home() {
                           {Array.from(
                             { length: new Date(
                               formData.graduationDate ? new Date(formData.graduationDate).getFullYear() : new Date().getFullYear(),
-                              formData.graduationDate ? new Date(formData.graduationDate).getMonth() : new Date().getMonth() + 1,
+                              formData.graduationDate ? new Date(formData.graduationDate).getMonth() : 0,
                               0
                             ).getDate() },
                             (_, i) => i + 1
