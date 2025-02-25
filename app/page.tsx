@@ -218,229 +218,233 @@ export default function Home() {
     switch (currentStep) {
       case 1:
         return (
-          <motion.div
-            key="step1"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="space-y-6"
-          >
-            <div className='flex flex-col gap-2'>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Bu anket, Türkiye&apos;deki işsizlik deneyimlerini ve iş arama süreçlerini daha iyi anlamak amacıyla, tamamen kişisel merak ve araştırma amaçlı olarak hazırlanmıştır. Ankette kimlik bilgileriniz veya özel bilgileriniz istenmemektedir. Paylaştığınız tüm bilgiler gizli tutulacak ve üçüncü şahıslarla paylaşılmayacaktır. Verdiğiniz yanıtlar, sadece genel istatistiksel analizler için kullanılacak ve toplu halde değerlendirilecektir. Katılımınız tamamen gönüllülük esasına dayanmaktadır.
+          <div className="space-y-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <p className="text-sm text-blue-800 leading-relaxed">
+                Bu ankete katılarak, verdiğiniz bilgilerin araştırma amacıyla kullanılmasını kabul etmiş olursunuz. Toplanan veriler, işsizlik deneyimlerini analiz etmek ve iyileştirme önerileri geliştirmek için kullanılacaktır. Kişisel tanımlayıcı bilgiler talep edilmemekte ve veriler anonim olarak işlenmektedir. Anketi doldurmanız, bu koşulları kabul ettiğiniz anlamına gelmektedir.
               </p>
-              <p className="text-gray-600 text-lg leading-relaxed border-l-4 border-gray-500 pl-4 mt-4 bg-red-500/10">
-                <span className="font-bold uppercase text-red-500">Not:</span> Bu ankete yalnızca <span className='font-bold underline'>hiç işe girmemiş</span> iş bulamayan bireylerin katılımı beklenmektedir.
-              </p>
-
             </div>
+            <motion.div
+              key="step1"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="space-y-6"
+            >
+              <div className='flex flex-col gap-2'>
+                <p className="text-gray-600 text-lg leading-relaxed border-none rounded-lg border-gray-500 pl-4 bg-red-500/10">
+                  <span className="font-bold uppercase text-red-500">Not:</span> Bu ankete yalnızca <span className='font-bold underline'>hiç işe girmemiş</span> iş bulamayan bireylerin katılımı beklenmektedir.
+                </p>
 
-            <div className="space-y-8">
-              <div>
-                <Label className="block text-sm font-medium text-gray-700">Cinsiyet</Label>
-                <Select
-                  value={formData.gender}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, gender: value }))}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seçiniz" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {genderOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
               </div>
 
-              <div className="grid gap-2">
-                <Label htmlFor="department">Mezun Olduğunuz Bölüm</Label>
-                <Select
-                  value={formData.department}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, department: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Bölümünüzü seçin" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {departmentOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              <div className="space-y-8">
+                <div>
+                  <Label className="block text-sm font-medium text-gray-700">Cinsiyet</Label>
+                  <Select
+                    value={formData.gender}
+                    onValueChange={(value) => setFormData(prev => ({ ...prev, gender: value }))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Seçiniz" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {genderOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div className="grid gap-2">
-                <Label htmlFor="gpa">Mezuniyet Notu</Label>
-                <Select
-                  value={formData.gpa}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, gpa: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Notunuzu seçin" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {gpaOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="department">Mezun Olduğunuz Bölüm</Label>
+                  <Select
+                    value={formData.department}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, department: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Bölümünüzü seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {departmentOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div className="grid gap-2">
-                <Label htmlFor="location">Yaşadığınız Şehir</Label>
-                <Select
-                  value={formData.location}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, location: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="İl seçin" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {turkishCities.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="gpa">Mezuniyet Notu</Label>
+                  <Select
+                    value={formData.gpa}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, gpa: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Notunuzu seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {gpaOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div className="space-y-2">
-                <Label className="block text-sm font-medium text-gray-700">Mezuniyet Tarihi</Label>
-                <div className="grid grid-cols-3 gap-2">
-                  <div>
-                    <Select
-                      value={formData.graduationDate ? new Date(formData.graduationDate).getFullYear().toString() : ''}
-                      onValueChange={(year) => {
-                        const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
-                        const newDate = new Date(parseInt(year), currentDate.getMonth(), currentDate.getDate());
-                        setFormData(prev => ({
-                          ...prev,
-                          graduationDate: newDate.toISOString()
-                        }));
-                      }}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Yıl" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i).map((year) => (
-                          <SelectItem key={year} value={year.toString()}>
-                            {year}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Select
-                      value={formData.graduationDate ? (new Date(formData.graduationDate).getMonth() + 1).toString() : ''}
-                      onValueChange={(month) => {
-                        const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
-                        const newDate = new Date(currentDate.getFullYear(), parseInt(month) - 1, currentDate.getDate());
-                        setFormData(prev => ({
-                          ...prev,
-                          graduationDate: newDate.toISOString()
-                        }));
-                      }}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Ay" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Array.from({ length: 12 }, (_, i) => {
-                          const date = new Date(2024, i, 1);
-                          return {
-                            value: (i + 1).toString(),
-                            label: format(date, 'MMMM', { locale: tr })
-                          };
-                        }).map((month) => (
-                          <SelectItem key={month.value} value={month.value}>
-                            {month.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Select
-                      value={formData.graduationDate ? new Date(formData.graduationDate).getDate().toString() : ''}
-                      onValueChange={(day) => {
-                        const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
-                        const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), parseInt(day));
-                        
-                        // Bugünden sonraki tarihleri kontrol et
-                        const today = new Date();
-                        today.setHours(0, 0, 0, 0);
-                        
-                        if (newDate > today) {
-                          toast.error('Mezuniyet tarihi bugünden sonra olamaz!');
-                          return;
-                        }
-                        
-                        setFormData(prev => ({
-                          ...prev,
-                          graduationDate: newDate.toISOString()
-                        }));
-                      }}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Gün" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Array.from(
-                          { length: new Date(
-                            formData.graduationDate ? new Date(formData.graduationDate).getFullYear() : new Date().getFullYear(),
-                            formData.graduationDate ? new Date(formData.graduationDate).getMonth() : new Date().getMonth() + 1,
-                            0
-                          ).getDate() },
-                          (_, i) => i + 1
-                        ).map((day) => (
-                          <SelectItem key={day} value={day.toString()}>
-                            {day}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                <div className="grid gap-2">
+                  <Label htmlFor="location">Yaşadığınız Şehir</Label>
+                  <Select
+                    value={formData.location}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, location: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="İl seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {turkishCities.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="block text-sm font-medium text-gray-700">Mezuniyet Tarihi</Label>
+                  <div className="grid grid-cols-3 gap-2">
+                    <div>
+                      <Select
+                        value={formData.graduationDate ? new Date(formData.graduationDate).getFullYear().toString() : ''}
+                        onValueChange={(year) => {
+                          const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
+                          const newDate = new Date(parseInt(year), currentDate.getMonth(), currentDate.getDate());
+                          setFormData(prev => ({
+                            ...prev,
+                            graduationDate: newDate.toISOString()
+                          }));
+                        }}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Yıl" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i).map((year) => (
+                            <SelectItem key={year} value={year.toString()}>
+                              {year}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Select
+                        value={formData.graduationDate ? (new Date(formData.graduationDate).getMonth() + 1).toString() : ''}
+                        onValueChange={(month) => {
+                          const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
+                          const newDate = new Date(currentDate.getFullYear(), parseInt(month) - 1, currentDate.getDate());
+                          setFormData(prev => ({
+                            ...prev,
+                            graduationDate: newDate.toISOString()
+                          }));
+                        }}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Ay" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Array.from({ length: 12 }, (_, i) => {
+                            const date = new Date(2024, i, 1);
+                            return {
+                              value: (i + 1).toString(),
+                              label: format(date, 'MMMM', { locale: tr })
+                            };
+                          }).map((month) => (
+                            <SelectItem key={month.value} value={month.value}>
+                              {month.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Select
+                        value={formData.graduationDate ? new Date(formData.graduationDate).getDate().toString() : ''}
+                        onValueChange={(day) => {
+                          const currentDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
+                          const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), parseInt(day));
+                          
+                          // Bugünden sonraki tarihleri kontrol et
+                          const today = new Date();
+                          today.setHours(0, 0, 0, 0);
+                          
+                          if (newDate > today) {
+                            toast.error('Mezuniyet tarihi bugünden sonra olamaz!');
+                            return;
+                          }
+                          
+                          setFormData(prev => ({
+                            ...prev,
+                            graduationDate: newDate.toISOString()
+                          }));
+                        }}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Gün" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Array.from(
+                            { length: new Date(
+                              formData.graduationDate ? new Date(formData.graduationDate).getFullYear() : new Date().getFullYear(),
+                              formData.graduationDate ? new Date(formData.graduationDate).getMonth() : new Date().getMonth() + 1,
+                              0
+                            ).getDate() },
+                            (_, i) => i + 1
+                          ).map((day) => (
+                            <SelectItem key={day} value={day.toString()}>
+                              {day}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="grid gap-2">
-                <Label htmlFor="location">Tercih ettiğiniz iş arama platformu</Label>
-                <Select
-                  value={formData.preferredPlatform}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, preferredPlatform: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Platform seçin" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {platformPreferences.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <div className="grid gap-2">
+                  <Label htmlFor="location">Tercih ettiğiniz iş arama platformu</Label>
+                  <Select
+                    value={formData.preferredPlatform}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, preferredPlatform: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Platform seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {platformPreferences.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         )
       case 2:
         return (
