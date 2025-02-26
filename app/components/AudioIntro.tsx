@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Play, Pause, Volume2 } from 'lucide-react'
+import { Play, Pause } from 'lucide-react'
 
 interface AudioIntroProps {
     onComplete: () => void
