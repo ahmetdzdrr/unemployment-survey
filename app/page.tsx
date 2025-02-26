@@ -490,7 +490,7 @@ export default function Home() {
               </div>
 
               <div>
-                <Label className="block text-sm font-medium text-gray-700">İşsizlik Kalma Süreniz</Label>
+                <Label className="block text-sm font-medium text-gray-700">İşsiz Kalma Süreniz</Label>
                 <Select
                   value={formData.unemploymentDuration}
                   onValueChange={(value) => setFormData(prev => ({ ...prev, unemploymentDuration: value }))}
