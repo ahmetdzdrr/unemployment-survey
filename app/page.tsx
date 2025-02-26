@@ -93,8 +93,6 @@ export default function Home() {
       'totalApplications',
       'interviewCount',
       'location',
-      'hiringProcessSatisfaction',
-      'requirementsSatisfaction',
       'feedbackSatisfaction',
       'hrCommunicationSatisfaction',
       'department',

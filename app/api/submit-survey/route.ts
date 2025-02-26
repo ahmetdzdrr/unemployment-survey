@@ -90,7 +90,8 @@ export async function POST(request: Request) {
         hiringProcessSatisfaction: parseInt(data.hiringProcessSatisfaction),
         requirementsSatisfaction: parseInt(data.requirementsSatisfaction),
         feedbackSatisfaction: parseInt(data.feedbackSatisfaction),
-        hrCommunicationSatisfaction: parseInt(data.hrCommunicationSatisfaction),
+
+        // İşveren İletişim Değerlendirmeleri
         platformSatisfaction: parseInt(data.platformSatisfaction),
         postInterviewFeedbackSatisfaction: parseInt(data.postInterviewFeedbackSatisfaction),
         salaryTransparencyOpinion: parseInt(data.salaryTransparencyOpinion),
@@ -99,6 +100,8 @@ export async function POST(request: Request) {
         bootcampBenefit: parseInt(data.bootcampBenefit),
         bootcampContent: parseInt(data.bootcampContent),
         bootcampJobGuarantee: parseInt(data.bootcampJobGuarantee),
+
+        hrCommunicationSatisfaction: parseInt(data.hrCommunicationSatisfaction),
       }
     )
 
