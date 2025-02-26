@@ -20,7 +20,7 @@ export default function Home() {
   const router = useRouter()
   const [showContent, setShowContent] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
-  const totalSteps = 7
+  const totalSteps = 6
   const [formData, setFormData] = useState({
     gender: '',
     graduationDate: '',
@@ -93,9 +93,6 @@ export default function Home() {
       'totalApplications',
       'interviewCount',
       'location',
-      'jobListingsSatisfaction',
-      'jobMatchSatisfaction',
-      'responseTimeSatisfaction',
       'hiringProcessSatisfaction',
       'requirementsSatisfaction',
       'feedbackSatisfaction',
@@ -179,29 +176,23 @@ export default function Home() {
         )
       case 3:
         return (
-          formData.jobListingsSatisfaction &&
-          formData.jobMatchSatisfaction &&
-          formData.responseTimeSatisfaction
-        )
-      case 4:
-        return (
           formData.hiringProcessSatisfaction &&
           formData.requirementsSatisfaction &&
           formData.feedbackSatisfaction
         )
-      case 5:
+      case 4:
         return (
           formData.platformSatisfaction &&
           formData.postInterviewFeedbackSatisfaction &&
           formData.salaryTransparencyOpinion
         )
-      case 6:
+      case 5:
         return (
           formData.bootcampBenefit &&
           formData.bootcampContent &&
           formData.bootcampJobGuarantee
         )
-      case 7:
+      case 6:
         return (
           formData.hrCommunicationSatisfaction
         )
@@ -412,11 +403,13 @@ export default function Home() {
                         </SelectTrigger>
                         <SelectContent>
                           {Array.from(
-                            { length: new Date(
-                              formData.graduationDate ? new Date(formData.graduationDate).getFullYear() : new Date().getFullYear(),
-                              formData.graduationDate ? new Date(formData.graduationDate).getMonth() : 0,
-                              0
-                            ).getDate() },
+                            {
+                              length: new Date(
+                                formData.graduationDate ? new Date(formData.graduationDate).getFullYear() : new Date().getFullYear(),
+                                formData.graduationDate ? new Date(formData.graduationDate).getMonth() : 0,
+                                0
+                              ).getDate()
+                            },
                             (_, i) => i + 1
                           ).map((day) => (
                             <SelectItem key={day} value={day.toString()}>
@@ -626,72 +619,6 @@ export default function Home() {
           >
             <div className="space-y-20">
               <div className="space-y-4">
-                <Label className="text-base">Mevcut iş ilanlarının sayısından ne kadar memnunsunuz?</Label>
-                <RadioGroup
-                  value={formData.jobListingsSatisfaction}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, jobListingsSatisfaction: value }))}
-                  className="flex flex-col space-y-1 pl-1"
-                >
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <div key={value} className="flex items-center space-x-3">
-                      <RadioGroupItem value={value.toString()} id={`jobListings-${value}`} />
-                      <Label htmlFor={`jobListings-${value}`} className="font-normal">
-                        {value} - {getSatisfactionLabel(value)}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              </div>
-
-              <div className="space-y-4">
-                <Label className="text-base">Başvurduğunuz işlerin size uygunluğundan ne kadar memnunsunuz?</Label>
-                <RadioGroup
-                  value={formData.jobMatchSatisfaction}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, jobMatchSatisfaction: value }))}
-                  className="flex flex-col space-y-1 pl-1"
-                >
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <div key={value} className="flex items-center space-x-3">
-                      <RadioGroupItem value={value.toString()} id={`jobMatch-${value}`} />
-                      <Label htmlFor={`jobMatch-${value}`} className="font-normal">
-                        {value} - {getSatisfactionLabel(value)}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              </div>
-
-              <div className="space-y-4">
-                <Label className="text-base">İşverenlerden geri dönüş alma sürecinizden ne kadar memnunsunuz?</Label>
-                <RadioGroup
-                  value={formData.responseTimeSatisfaction}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, responseTimeSatisfaction: value }))}
-                  className="flex flex-col space-y-1 pl-1"
-                >
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <div key={value} className="flex items-center space-x-3">
-                      <RadioGroupItem value={value.toString()} id={`responseTime-${value}`} />
-                      <Label htmlFor={`responseTime-${value}`} className="font-normal">
-                        {value} - {getSatisfactionLabel(value)}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              </div>
-            </div>
-          </motion.div>
-        )
-      case 4:
-        return (
-          <motion.div
-            key="step4"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="space-y-6"
-          >
-            <div className="space-y-20">
-              <div className="space-y-4">
                 <Label className="text-base">Şirketlerin işe alım süreçlerinin şeffaflığı ve profesyonelliğinden ne kadar memnunsunuz?</Label>
                 <RadioGroup
                   value={formData.hiringProcessSatisfaction}
@@ -726,7 +653,7 @@ export default function Home() {
                 </RadioGroup>
               </div>
               <div className="space-y-4">
-                <Label className="text-base">İşverenlerin başvuranlara geri bildirim verme oranından ne kadar memnunsunuz?</Label>
+                <Label className="text-base">İşverenlerin başvurularınıza geri bildirim verme oranından ne kadar memnunsunuz?</Label>
                 <RadioGroup
                   value={formData.feedbackSatisfaction}
                   onValueChange={(value) => setFormData(prev => ({ ...prev, feedbackSatisfaction: value }))}
@@ -746,10 +673,10 @@ export default function Home() {
           </motion.div>
         )
 
-      case 5:
+      case 4:
         return (
           <motion.div
-            key="step5"
+            key="step4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
@@ -810,10 +737,10 @@ export default function Home() {
             </div>
           </motion.div>
         )
-      case 6:
+      case 5:
         return (
           <motion.div
-            key="step6"
+            key="step5"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
@@ -842,10 +769,10 @@ export default function Home() {
             </div>
           </motion.div>
         )
-      case 7:
+      case 6:
         return (
           <motion.div
-            key="step7"
+            key="step6"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
