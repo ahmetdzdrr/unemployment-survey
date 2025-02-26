@@ -204,7 +204,7 @@ export default function Home() {
 
   if (!hasListenedAudio) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-cover bg-center bg-black/5" style={{ backgroundImage: "url('/jobless.webp')" }}>
+      <main className="min-h-screen flex items-center justify-center bg-gray-50">
         <AudioIntro onComplete={() => setHasListenedAudio(true)} />
       </main>
     )
@@ -839,7 +839,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex items-center justify-center relative p-4">
-      <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/jobless.webp')" }} />
+      <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: "url('/jobless.webp')" }} />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
