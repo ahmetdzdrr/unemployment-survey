@@ -204,7 +204,7 @@ export default function Home() {
 
   if (!hasListenedAudio) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <main className="min-h-screen flex items-center justify-center bg-cover bg-center bg-black/5" style={{ backgroundImage: "url('/jobless.webp')" }}>
         <AudioIntro onComplete={() => setHasListenedAudio(true)} />
       </main>
     )
@@ -614,7 +614,7 @@ export default function Home() {
           </motion.div>
         )
       case 3:
-  return (
+        return (
           <motion.div
             key="step3"
             initial={{ opacity: 0, x: 20 }}
@@ -771,7 +771,7 @@ export default function Home() {
                   </RadioGroup>
                 </div>
               ))}
-        </div>
+            </div>
           </motion.div>
         )
       case 6:
@@ -838,13 +838,14 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <main className="min-h-screen flex items-center justify-center relative p-4">
+      <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/jobless.webp')" }} />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-4xl"
+        className="w-full max-w-4xl relative z-10"
       >
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg p-6">
+        <form onSubmit={handleSubmit} className="bg-white/100 backdrop-blur-none rounded-xl shadow-lg p-6">
           <div className="mb-8">
             <div className="relative h-2 bg-gray-200 rounded-full">
               <motion.div
@@ -880,7 +881,7 @@ export default function Home() {
             >
               {currentStep === totalSteps ? 'Gönder' : 'İleri'}
             </Button>
-    </div>
+          </div>
         </form>
       </motion.div>
     </main>
