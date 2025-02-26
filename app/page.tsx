@@ -328,8 +328,13 @@ export default function Home() {
                       <Select
                         value={formData.graduationDate ? new Date(formData.graduationDate).getFullYear().toString() : ''}
                         onValueChange={(year) => {
-                          const newDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date();
-                          newDate.setFullYear(parseInt(year));
+                          let newDate;
+                          if (formData.graduationDate) {
+                            newDate = new Date(formData.graduationDate);
+                            newDate.setFullYear(parseInt(year));
+                          } else {
+                            newDate = new Date(parseInt(year), 0, 1);
+                          }
                           setFormData(prev => ({
                             ...prev,
                             graduationDate: newDate.toISOString()
@@ -352,8 +357,14 @@ export default function Home() {
                       <Select
                         value={formData.graduationDate ? (new Date(formData.graduationDate).getMonth() + 1).toString() : ''}
                         onValueChange={(month) => {
-                          const newDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date(0);
-                          newDate.setMonth(parseInt(month) - 1);
+                          let newDate;
+                          if (formData.graduationDate) {
+                            newDate = new Date(formData.graduationDate);
+                            newDate.setMonth(parseInt(month) - 1);
+                          } else {
+                            const currentYear = new Date().getFullYear();
+                            newDate = new Date(currentYear, parseInt(month) - 1, 1);
+                          }
                           setFormData(prev => ({
                             ...prev,
                             graduationDate: newDate.toISOString()
@@ -382,8 +393,14 @@ export default function Home() {
                       <Select
                         value={formData.graduationDate ? new Date(formData.graduationDate).getDate().toString() : ''}
                         onValueChange={(day) => {
-                          const newDate = formData.graduationDate ? new Date(formData.graduationDate) : new Date(0);
-                          newDate.setDate(parseInt(day));
+                          let newDate;
+                          if (formData.graduationDate) {
+                            newDate = new Date(formData.graduationDate);
+                            newDate.setDate(parseInt(day));
+                          } else {
+                            const currentYear = new Date().getFullYear();
+                            newDate = new Date(currentYear, 0, parseInt(day));
+                          }
                           setFormData(prev => ({
                             ...prev,
                             graduationDate: newDate.toISOString()
