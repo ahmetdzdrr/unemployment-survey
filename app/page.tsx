@@ -15,6 +15,7 @@ import { format } from 'date-fns'
 import { tr } from 'date-fns/locale'
 import IntroAnimation from './components/IntroAnimation'
 import { getAgreementLabel, getFieldLabel, getSatisfactionLabel } from '@/constants'
+import AudioIntro from './components/AudioIntro'
 
 export default function Home() {
   const router = useRouter()
@@ -49,6 +50,7 @@ export default function Home() {
     bootcampContent: '',
     bootcampJobGuarantee: '',
   })
+  const [hasListenedAudio, setHasListenedAudio] = useState(false)
 
   useEffect(() => {
     const contentTimer = setTimeout(() => {
@@ -198,6 +200,14 @@ export default function Home() {
 
   if (!showContent) {
     return <IntroAnimation />
+  }
+
+  if (!hasListenedAudio) {
+    return (
+      <main className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <AudioIntro onComplete={() => setHasListenedAudio(true)} />
+      </main>
+    )
   }
 
   const renderStepContent = () => {
@@ -604,7 +614,7 @@ export default function Home() {
           </motion.div>
         )
       case 3:
-        return (
+  return (
           <motion.div
             key="step3"
             initial={{ opacity: 0, x: 20 }}
@@ -761,7 +771,7 @@ export default function Home() {
                   </RadioGroup>
                 </div>
               ))}
-            </div>
+        </div>
           </motion.div>
         )
       case 6:
@@ -870,7 +880,7 @@ export default function Home() {
             >
               {currentStep === totalSteps ? 'Gönder' : 'İleri'}
             </Button>
-          </div>
+    </div>
         </form>
       </motion.div>
     </main>
