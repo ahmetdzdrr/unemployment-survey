@@ -87,9 +87,6 @@ export async function POST(request: Request) {
         preferredPlatform: data.preferredPlatform,
 
         // Memnuniyet Değerlendirmeleri
-        jobListingsSatisfaction: parseInt(data.jobListingsSatisfaction),
-        jobMatchSatisfaction: parseInt(data.jobMatchSatisfaction),
-        responseTimeSatisfaction: parseInt(data.responseTimeSatisfaction),
         hiringProcessSatisfaction: parseInt(data.hiringProcessSatisfaction),
         requirementsSatisfaction: parseInt(data.requirementsSatisfaction),
         feedbackSatisfaction: parseInt(data.feedbackSatisfaction),
