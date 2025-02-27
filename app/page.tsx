@@ -244,8 +244,8 @@ export default function Home() {
     switch (currentStep) {
       case 1:
         return (
-          <div className="space-y-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="space-y-3">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2">
               <p className="text-sm text-blue-800 leading-relaxed">
                 Bu ankete katılarak, verdiğiniz bilgilerin araştırma amacıyla
                 kullanılmasını kabul etmiş olursunuz. Toplanan veriler, işsizlik
@@ -260,10 +260,10 @@ export default function Home() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="space-y-6"
+              className="space-y-3"
             >
               <div className="flex flex-col gap-2">
-                <p className="text-gray-600 text-lg sm:text-md xs:text-sm leading-relaxed border-none rounded-lg border-gray-500 p-4 bg-red-500/10 w-full">
+                <p className="text-gray-600 text-[12px] sm:text-md xs:text-sm leading-relaxed border-none rounded-lg border-gray-500 p-4 bg-red-500/10 w-full">
                   <span className="font-bold uppercase text-red-500">Not:</span>{" "}
                   Bu ankete yalnızca{" "}
                   <span className="font-bold underline">hiç işe girmemiş</span>{" "}
