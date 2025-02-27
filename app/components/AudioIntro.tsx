@@ -81,14 +81,14 @@ export default function AudioIntro({ onComplete }: AudioIntroProps) {
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center justify-center space-y-8 p-8 bg-white rounded-xl shadow-lg max-w-md mx-auto"
+            className="flex flex-col items-center justify-center space-y-6 p-4 sm:p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto"
         >
-            <h2 className="text-xl font-semibold text-center">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-center">
                 Ankete başlamadan önce lütfen açıklamayı dinleyiniz
             </h2>
 
             <div className="w-full space-y-6">
-                <div className="relative flex items-center justify-center w-24 h-24 mx-auto">
+                <div className="relative flex items-center justify-center w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 mx-auto">
                     <motion.div
                         className="absolute inset-0 bg-gray-100 rounded-full"
                         animate={{
@@ -101,21 +101,21 @@ export default function AudioIntro({ onComplete }: AudioIntroProps) {
                     />
                     <button
                         onClick={handlePlay}
-                        className="relative z-10 flex items-center justify-center w-16 h-16 bg-black rounded-full text-white hover:bg-gray-800 transition-colors"
+                        className="relative z-10 flex items-center justify-center w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 bg-black rounded-full text-white hover:bg-gray-800 transition-colors"
                     >
                         {isPlaying ? (
-                            <Pause className="w-8 h-8" />
+                            <Pause className="w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10" />
                         ) : (
-                            <Play className="w-8 h-8 ml-1" />
+                            <Play className="w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10 ml-1" />
                         )}
                     </button>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 w-full">
                     <div
                         ref={progressBarRef}
                         onClick={handleProgressBarClick}
-                        className="h-2 bg-gray-200 rounded-full cursor-pointer overflow-hidden"
+                        className="h-2 md:h-3 bg-gray-200 rounded-full cursor-pointer overflow-hidden"
                     >
                         <motion.div
                             className="h-full bg-black"
@@ -124,7 +124,7 @@ export default function AudioIntro({ onComplete }: AudioIntroProps) {
                         />
                     </div>
 
-                    <div className="flex justify-between text-sm text-gray-500">
+                    <div className="flex justify-between text-xs sm:text-sm text-gray-500">
                         <span>{formatTime((duration * progress) / 100)}</span>
                         <span>{formatTime(duration)}</span>
                     </div>
@@ -148,7 +148,7 @@ export default function AudioIntro({ onComplete }: AudioIntroProps) {
                     >
                         <Button
                             onClick={onComplete}
-                            className="w-full bg-black hover:bg-gray-800 text-white"
+                            className="w-full bg-black hover:bg-gray-800 text-white text-sm sm:text-base md:text-lg py-2 sm:py-3 md:py-4"
                         >
                             Ankete Başla
                         </Button>
@@ -157,10 +157,10 @@ export default function AudioIntro({ onComplete }: AudioIntroProps) {
             </AnimatePresence>
 
             {!hasEnded && (
-                <p className="text-sm text-gray-500 text-center">
+                <p className="text-xs sm:text-sm md:text-base text-gray-500 text-center">
                     Ankete başlamak için açıklamayı sonuna kadar dinlemeniz gerekmektedir.
                 </p>
             )}
         </motion.div>
     )
-} 
+}

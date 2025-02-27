@@ -276,7 +276,7 @@ export const unemploymentDurations = [
   { value: "3-6 ay", label: "3-6 ay" },
   { value: "6-9 ay", label: "3-6 ay" },
   { value: "9-12 ay", label: "9-12 ay" },
-  { value: "1 yıl ve üzeri", label: "1 yıl ve üzeri" }
+  { value: "12 ay ve üzeri", label: "12 ay ve üzeri" }
 ]
 
 export const applicationCountRanges = [
