@@ -538,7 +538,7 @@ export default function Home() {
               </div>
 
               <div>
-                <Label className="block text-sm font-medium text-gray-700">Görüşmeye Çağrılma Sayınız</Label>
+                <Label className="block text-sm font-medium text-gray-700">Toplam Görüşmeye Çağrılma Sayınız</Label>
                 <Select
                   value={formData.interviewCount}
                   onValueChange={(value) => setFormData(prev => ({ ...prev, interviewCount: value }))}
